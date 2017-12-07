@@ -50,7 +50,7 @@
           <article class="mini-post">
             <header>
               <h3>
-                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                <a href="blog.do?p={{ .RelPermalink | safeURL }}">{{ .Title }}</a>
               </h3>
               {{ $.Scratch.Set "dateType" .Date }}
               <time class="published" datetime='{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
@@ -67,7 +67,7 @@
           {{ with .Site.Params.viewMorePostLink }}
             {{ . }}
           {{ else }}
-            "/post/"
+            "blog.do?p=/post/"
           {{ end }}
         class="button">View more posts</a>
       {{ end }}
@@ -81,7 +81,7 @@
     <section id="categories">
       <header>
         <h3>
-          <a href="/categories/">Categories</a>
+          <a href="blog.do?p=/categories/">Categories</a>
         </h3>
       </header>
         {{ if .Site.Params.categoriesByCount }}
@@ -95,7 +95,7 @@
           <article>
             <header>
               {{ if ne $value.Name "" }}
-                <a href="/categories/{{ $value.Name | urlize }}/">{{ $value.Name }}</a>
+                <a href="blog.do?p=/categories/{{ $value.Name | urlize }}/">{{ $value.Name }}</a>
                 <span style="float:right;">{{ $value.Count }}</span>
               {{ else }}
                 Uncategorized
