@@ -1,5 +1,5 @@
 <!-- Social Share Button HTML -->
-
+Share on: 
 <!-- Twitter -->
 <li>
   <a href="//twitter.com/share?url={{ .Permalink }}&text={{ .Title }}&via={{ .Site.Social.twitter }}" target="_blank" class="share-btn twitter">
@@ -18,32 +18,32 @@
 
 <!-- Facebook -->
 <li>
-  <a href="//www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" class="share-btn facebook">
-    <i class="fa fa-facebook"></i>
+  <a href="//www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" class="facebook">
+    <i class="share-btn fa fa-facebook"></i>
     <p>Facebook</p>
     </a>
 </li>
 
 <!-- Reddit -->
 <li>
-  <a href="//reddit.com/submit?url={{ .Permalink }}&title={{ .Title }}" target="_blank" class="share-btn reddit">
-    <i class="fa fa-reddit-alien"></i>
+  <a href="//reddit.com/submit?url={{ .Permalink }}&title={{ .Title }}" target="_blank" class="reddit">
+    <i class="share-btn fa fa-reddit-alien"></i>
     <p>Reddit</p>
   </a>
 </li>
 
 <!-- LinkedIn -->
 <li>
-  <a href="//www.linkedin.com/shareArticle?url={{ .Permalink }}&title={{ .Title }}" target="_blank" class="share-btn linkedin">
-      <i class="fa fa-linkedin"></i>
+  <a href="//www.linkedin.com/shareArticle?url={{ .Permalink }}&title={{ .Title }}" target="_blank" class="linkedin">
+      <i class="share-btn fa fa-linkedin"></i>
       <p>LinkedIn</p>
     </a>
 </li>
 
 <!-- Email -->
 <li>
-  <a href="mailto:?subject=Check out this post by {{ .Params.author }}&body={{ .Permalink }}" target="_blank" class="share-btn email">
-    <i class="fa fa-envelope"></i>
+  <a href="mailto:?subject=Check out this post by {{ .Params.author }}&body={{ .Permalink }}" target="_blank" class="email">
+    <i class="share-btn fa fa-envelope"></i>
     <p>Email</p>
   </a>
 </li>

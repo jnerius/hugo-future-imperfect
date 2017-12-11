@@ -25,7 +25,7 @@
                         {{ $categoryMenu.Name | singularize }}
                     {{ end }}
                 {{ else }}
-                    {{ $.Scratch.Set "categoryUrl" "blog.do?p=/categories/" }}
+                    {{ $.Scratch.Set "categoryUrl" "/categories/" }}
 
                     {{ if gt $categoryCount 1 }}
                         Categories
@@ -39,6 +39,6 @@
 
     <!-- Display the categories associated with this post -->
     {{ range .Params.categories }}
-        <li><a href='{{ add ($.Scratch.Get "categoryUrl") . | urlize }}'>{{ . }}</a></li>
+        <li><a href='blog.do?p={{ add ($.Scratch.Get "categoryUrl") . | urlize | safeURL }}/'>{{ . }}</a></li>
     {{ end }}
 </ul>

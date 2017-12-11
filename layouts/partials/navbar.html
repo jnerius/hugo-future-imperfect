@@ -1,11 +1,13 @@
 <!-- Header -->
 <header id="header">
     {{ if or .IsHome (not .Site.Params.DynamicTitles) }}
-      <h1><a href="{{ "/blog.do" | relURL }}">
-        <span id="logo" style="margin-top:10px">
-            <img height="30" src="/images/devportal-blog-logo.png" />
-        </span>
-      </a></h1>
+     <h1>
+         <a href="{{ "/blog.do" | relURL }}">
+            <span id="logo" style="margin-top:10px">
+                <img height="30" src="{{ .Site.Params.devportal.assets}}/images/devportal-blog-logo.png" />
+            </span>
+        </a>
+    </h1>
     {{ else if ne .Section "" }}
       <h1><a href="{{ "/blog.do" | relURL }}">{{ .Section }}</a></h1>
     {{ else }}
@@ -87,7 +89,7 @@
                 {{ range first ($.Scratch.Get "postLimit") (where ($.Scratch.Get "recentPosts") "Type" "post") }}
                         <article class="mini-post">
                             <header>
-                                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                                <h3><a href="blog.do?p={{ .RelPermalink | safeURL }}">{{ .Title }}</a></h3>
                                 {{ $.Scratch.Set "dateType" .Date }}
                                 <time class="published" datetime=
                                     '{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>

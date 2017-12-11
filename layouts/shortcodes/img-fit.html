@@ -62,7 +62,7 @@
                 {{ end }}
             {{ else }}
                 {{ if ne ($.Scratch.Get "imgFile") "" }}
-                        <img src='{{ $path }}/{{ $.Scratch.Get "imgFile" }}'
+                        <img src='{{ .Site.Params.devportal.assets }}/post/{{ $.Scratch.Get "imgFile" }}'
                             alt="{{ . }}">
                     </span></div>
                 {{ end }}
