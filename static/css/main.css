@@ -758,11 +758,15 @@
 			display: block;
 		}
 
-		.image.left,
-		.image.right,
 		.image.center {
-			max-width: 40%;
+			max-width: 100%;
 		}
+
+		.image.left,
+		.image.right {
+			max-width: 40%; 
+		}
+		
 
 			.image.left img,
 			.image.right img,
@@ -2813,8 +2817,8 @@
 
 
 	  #social-share .share-btn {
-	    padding: 0.5em;
-	    width: 4em;
+	    padding: 0.2em;
+	    width: 3em;
 	  }
 
 	    #social-share-nav .share-btn h3{
