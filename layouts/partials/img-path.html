@@ -1,12 +1,9 @@
 <!-- This partial is used by the img shortcodes and the template,
      featured in the post type
-
      Set the path depending on the value passed through
-
      if path is title then it will use the LinkTitle from the Page variable
      if path is date then it will format the directory to year/date i.e. 2006/01
      Note: path will be concatenated to the root directory, img
-
      otherwise use the explicit path provided by the user
 -->
 {{ $path := $.Scratch.Get "path" }}
@@ -23,8 +20,7 @@
         {{ $.Scratch.Add "path" (lower (replace .LinkTitle " " "-")) }}
     {{ end }}
 {{ else if eq $path "date" }}
-    {{ $.Scratch.Set "path" .Site.Params.devportal.assets }}
-    {{ $.Scratch.Add "path" "/post/" }}
+    {{ $.Scratch.Set "path" "/img/" }}
     {{ if eq $structType "shortcode" }}
         {{ $.Scratch.Add "path" (.Page.Date.Format "2006/01") }}
     {{ else }}
@@ -32,6 +28,5 @@
     {{ end }}
 {{ else }}
     {{ $.Scratch.Set "path" .Site.Params.devportal.assets }}
-    {{ $.Scratch.Add "path" "/post/" }}
-    {{ $.Scratch.Add "path" (lower (replace .LinkTitle " " "-")) }}
+    {{ $.Scratch.Add "path" $path }}
 {{ end }}
