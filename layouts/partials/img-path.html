@@ -12,8 +12,8 @@
 {{ $structType := $.Scratch.Get "structType" }}
 
 {{ if eq $path "title" }}
-    {{ $.Scratch.Set "path" .Site.Params.devportal.assets }}
-    {{ $.Scratch.Add "path" "/post/" }}
+    {{ $.Scratch.Set "path" $.Site.Params.devportal.vfs }}
+    {{ $.Scratch.Add "path" "/post/"}}
     {{ if eq $structType "shortcode" }}
         {{ $.Scratch.Add "path" (lower (replace .Page.LinkTitle " " "-")) }}
     {{ else }}
@@ -27,6 +27,5 @@
         {{ $.Scratch.Add "path" (.Date.Format "2006/01") }}
     {{ end }}
 {{ else }}
-    {{ $.Scratch.Set "path" .Site.Params.devportal.assets }}
-    {{ $.Scratch.Add "path" $path }}
+    {{ $.Scratch.Set "path" $path }}
 {{ end }}
