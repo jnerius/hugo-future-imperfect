@@ -1,0 +1,5 @@
+{{ with .OutputFormats.Get "RSS" }}
+    {{ $.Scratch.Set "rsslink" $.Site.BaseURL }}
+    {{ $.Scratch.Add "rsslink" "/blog.do?p=" }}
+    {{ $.Scratch.Add "rsslink" .RelPermalink }}
+{{ end }}

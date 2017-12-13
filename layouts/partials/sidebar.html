@@ -21,10 +21,12 @@
     {{ end }}
     {{ if .Site.Params.socialAppearAtTop }}
       <ul class="icons">
-        {{ if .Site.Params.rssAppearAtTop }}
-          <li>
-            <a href="{{ .RSSLink }}" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
-          </li>
+        {{ if and (.Site.Params.rssAppearAtTop) (.RSSLink) }}
+          {{ partial "rss-link" . }} 
+          {{ $rsslink := $.Scratch.Get "rsslink" }} 
+            <li>
+              <a href="{{ $rsslink }}" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+            </li>
         {{ end }}
         {{ partial "social" . }}
       </ul>
@@ -121,9 +123,11 @@
   <section id="footer">
     {{ if .Site.Params.socialAppearAtBottom }}
       <ul class="icons">
-        {{ if .Site.Params.rssAppearAtBottom }}
+        {{ if and (.Site.Params.rssAppearAtBottom) (.RSSLink) }}
+          {{ partial "rss-link" . }}
+          {{ $rsslink := $.Scratch.Get "rsslink" }}
           <li>
-            <a href="{{ .RSSLink }}" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+            <a href="{{ $rsslink }}" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
           </li>
         {{ end }}
         {{ partial "social" . }}
