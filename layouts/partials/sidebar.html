@@ -23,7 +23,7 @@
       <ul class="icons">
         {{ if .Site.Params.rssAppearAtTop }}
           <li>
-            <a href="blog.do?p={{ .RelRSSLink }}" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+            <a href="{{ .RSSLink }}" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
           </li>
         {{ end }}
         {{ partial "social" . }}
@@ -123,7 +123,7 @@
       <ul class="icons">
         {{ if .Site.Params.rssAppearAtBottom }}
           <li>
-            <a href="blog.do?p=/{{ .RSSLink }}" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+            <a href="{{ .RSSLink }}" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
           </li>
         {{ end }}
         {{ partial "social" . }}
