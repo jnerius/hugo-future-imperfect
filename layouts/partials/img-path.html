@@ -19,6 +19,22 @@
     {{ else }}
         {{ $.Scratch.Add "path" (lower (replace .LinkTitle " " "-")) }}
     {{ end }}
+{{ else if eq $path "slug" }}
+    {{ $.Scratch.Set "path" $.Site.Params.devportal.vfs }}
+    {{ $.Scratch.Add "path" "/post/"}}
+    {{ if eq $structType "shortcode" }}
+        {{ $.Scratch.Add "path" (lower (replace .Page.Slug " " "-")) }}
+    {{ else }}
+        {{ $.Scratch.Add "path" (lower (replace .Slug " " "-")) }}
+    {{ end }}
+{{ else if eq $path "dir" }}
+    {{ $.Scratch.Set "path" $.Site.Params.devportal.vfs }}
+    {{ $.Scratch.Add "path" "/"}}
+    {{ if eq $structType "shortcode" }}
+        {{ $.Scratch.Add "path" (strings.TrimSuffix "/" (lower (replace .Page.Dir " " "-"))) }}
+    {{ else }}
+        {{ $.Scratch.Add "path" (strings.TrimSuffix "/" (lower (replace .Dir " " "-"))) }}
+    {{ end }}
 {{ else if eq $path "date" }}
     {{ $.Scratch.Set "path" "/img/" }}
     {{ if eq $structType "shortcode" }}
