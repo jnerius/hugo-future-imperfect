@@ -1435,6 +1435,40 @@
 							margin-right: 0.75em;
 						}
 
+			.post > header .meta .tags {
+					cursor: default;
+					list-style: none;
+					padding: 0;
+			}
+			
+			.post > header .meta  .tags li {
+						border-left: solid 1px rgba(160, 160, 160, 0.3);
+						display: inline-block;
+						font-family: "Raleway", Helvetica, sans-serif;
+						font-size: 0.6em;
+						font-weight: 400;
+						letter-spacing: 0.25em;
+						line-height: 1;
+						margin: 0 0 0 2em;
+						padding: 0 0 0 2em;
+						text-transform: uppercase;
+			}
+			
+			.post > footer .meta  .tags li:first-child {
+				border-left: 0;
+				margin-left: 0;
+				padding-left: 0;
+			}
+			
+			.post > footer  .meta .tags li .icon {
+					border-bottom: 0;
+			}
+			
+			.post > footer .meta  .tags li .icon:before {
+					color: rgba(160, 160, 160, 0.3);
+					margin-right: 0.75em;
+			}
+
 		@media screen and (max-width: 980px) {
 
 			.post {

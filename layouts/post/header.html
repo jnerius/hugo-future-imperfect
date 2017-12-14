@@ -16,6 +16,7 @@
         <time class="published"
             datetime='{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
             {{ ($.Scratch.Get "dateType").Format "January 2, 2006" }}</time>
+            {{ .Render "header-tags" }}
             <span class="author">
                 <ul>
                     {{ range $author := .Params.authors  }} 
