@@ -9,6 +9,8 @@
         {{ with .Description }}
             <p>{{ . }}</p>
         {{ end }}
+
+        {{ .Render "header-tags" }}
     </div>
     <div class="meta">
         {{ $.Scratch.Set "dateType" .Date }}
@@ -16,20 +18,23 @@
         <time class="published"
             datetime='{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
             {{ ($.Scratch.Get "dateType").Format "January 2, 2006" }}</time>
-            {{ .Render "header-tags" }}
-            <span class="author">
-                <ul>
-                    {{ range $author := .Params.authors  }} 
-                    {{ range ( $.Site.GetPage "taxonomyTerm" "authors").Pages }}
-                    {{ if eq $author .Params.name }}
-                    <li>
-                    <a href="blog.do?p={{ .RelPermalink | safeURL}}">
-                    <img class="thumbnail" src="{{ .Site.Params.devportal.vfs }}/authors/{{ .Params.slug }}/{{ .Params.photo }}" />               
-                    {{ .Params.name }}
-                    </a></li>
-                    {{ end }} {{ end }}{{ end }}
-                </ul>
-                    </span>
+
+            <span>
+                
+                {{ range $author := .Params.authors  }} 
+                {{ range ( $.Site.GetPage "taxonomyTerm" "authors").Pages }}
+                {{ if eq $author .Params.name }}
+                <!--<li>-->
+                <a class="author" href="blog.do?p={{ .RelPermalink | safeURL}}">
+
+                    <span class="name">{{ .Params.name }}</span>
+                    <img src="{{ .Site.Params.devportal.vfs }}/authors/{{ .Params.slug }}/{{ .Params.photo }}" /> 
+                
+                </a>
+                <!--</li>-->
+                {{ end }} {{ end }}{{ end }}
+            
+            </span>
         {{ if .Site.Params.includeReadingTime }}
             <p>{{ .ReadingTime }} minute read</p>
         {{ end }}
