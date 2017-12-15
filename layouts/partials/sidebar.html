@@ -58,6 +58,13 @@
               <time class="published" datetime='{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
                 {{ ($.Scratch.Get "dateType").Format "January 2, 2006" }}
               </time>
+              {{ range first 1 .Params.authors }}
+                {{ range where ($.Site.GetPage "taxonomyTerm" "authors").Pages "Params.name" . }}
+                  <a class="author" href="blog.do?p={{ .RelPermalink | safeURL}}">
+                    <img src="{{ $.Site.Params.devportal.vfs }}/{{ .Dir }}{{ .Params.photo }}"/>
+                  </a>
+                {{ end }}
+              {{ end }}
             </header>
             {{ .Render "featured" }}
           </article>
