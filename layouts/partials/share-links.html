@@ -1,8 +1,18 @@
 <!-- Social Share Button HTML -->
+{{ partial "permalink" . }}
+{{ $permalink := $.Scratch.Get "permalink" }}
+
+{{ if .Params.authors }}
+  {{ range first 1 .Params.authors }}
+    {{ range where ($.Site.GetPage "taxonomyTerm" "authors").Pages "Params.name" . }}
+      {{ $.Scratch.Set "twitter" .Params.twitter }}
+    {{ end }}
+  {{ end }}
+{{ end }}
 
 <!-- Twitter -->
 <li>
-  <a href="//twitter.com/share?url={{ .Permalink }}&text={{ .Title }}&via={{ .Site.Social.twitter }}" target="_blank" class="share-btn twitter">
+  <a href="//twitter.com/share?url={{ $permalink }}&text={{ .Title }}{{ if $.Scratch.Get "twitter" }}&via={{ $.Scratch.Get "twitter" }}{{ end }}" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
     </a>

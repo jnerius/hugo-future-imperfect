@@ -1,0 +1,3 @@
+{{ $.Scratch.Set "permalink" $.Site.BaseURL }}
+{{ $.Scratch.Add "permalink" "/blog.do?p=" }}
+{{ $.Scratch.Add "permalink" .RelPermalink }}
