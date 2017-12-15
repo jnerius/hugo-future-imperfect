@@ -1,4 +1,4 @@
-<ul class="tags">
+<p class="tags" style="margin-top:10px">
 {{ if isset .Params "tags" }}
 {{ $tagCount := (len .Params.tags) }}
 
@@ -7,38 +7,39 @@
     The title will use the variables from the tags menu set in the Config.
     If the tags menu was not set then use the default values instead.
 -->
+<!--
 {{ if ge $tagCount 1 }}
-    <li>
-        {{ $tagMenu := (where .Site.Menus.main "Name" "Tags") }}
-        {{ if ne (len $tagMenu) 0 }}
-            {{ $tagMenu := index $tagMenu 0 }}
+    {{ $tagMenu := (where .Site.Menus.main "Name" "Tags") }}
+    {{ if ne (len $tagMenu) 0 }}
+        {{ $tagMenu := index $tagMenu 0 }}
 
-            {{ $.Scratch.Set "tagUrl" $tagMenu.URL }}
+        {{ $.Scratch.Set "tagUrl" $tagMenu.URL }}
 
-            {{ with $tagMenu.Identifier }}
-                <i class="{{ . }}">&nbsp;</i>
-            {{ end }}
-
-            {{ if gt $tagCount 1 }}
-                {{ $tagMenu.Name }}
-            {{ else }}
-                {{ $tagMenu.Name | singularize }}
-            {{ end }}
-        {{ else }}
-            {{ $.Scratch.Set "tagUrl" "/tags/" }}
-
-            {{ if gt $tagCount 1 }}
-                Tags
-            {{ else }}
-                Tag
-            {{ end }}
+        {{ with $tagMenu.Identifier }}
+            <i class="{{ . }}">&nbsp;</i>
         {{ end }}
-    </li>
+
+        {{ if gt $tagCount 1 }}
+            {{ $tagMenu.Name }}
+        {{ else }}
+            {{ $tagMenu.Name | singularize }}
+        {{ end }}
+    {{ else }}
+        {{ $.Scratch.Set "tagUrl" "/tags/" }}
+
+        {{ if gt $tagCount 1 }}
+            Tags
+        {{ else }}
+            Tag
+        {{ end }}
+    {{ end }}
 {{ end }}
+--> 
 {{ end }}
 
 <!-- Display the tags associated with this post -->
-{{ range .Params.tags }}
-<li><a href='blog.do?p={{ add ($.Scratch.Get "tagUrl") . | urlize | safeURL }}/'>{{ . }}</a></li>
+{{ range $i, $t := .Params.tags }}
+    {{ if $i }},{{ end }}
+    <a href='blog.do?p={{ add ($.Scratch.Get "tagUrl") . | urlize | safeURL }}/'>#{{ $t }}</a> 
 {{ end }}
-</ul>
+</p>
