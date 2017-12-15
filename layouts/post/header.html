@@ -28,7 +28,7 @@
                 <a class="author" href="blog.do?p={{ .RelPermalink | safeURL}}">
 
                     <span class="name">{{ .Params.name }}</span>
-                    <img src="{{ .Site.Params.devportal.vfs }}/authors/{{ .Params.slug }}/{{ .Params.photo }}" /> 
+                    <img src="{{ .Site.Params.devportal.vfs }}/{{ .Dir }}{{ .Params.photo }}" /> 
                 
                 </a>
                 <!--</li>-->
