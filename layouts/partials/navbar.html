@@ -1,13 +1,12 @@
 <!-- Header -->
 <header id="header">
     {{ if or .IsHome (not .Site.Params.DynamicTitles) }}
-     <h1>
-         <a href="{{ "/blog.do" | relURL }}">
-            <span id="logo" style="margin-top:10px">
-                <img height="30" src="{{ .Site.Params.devportal.assets}}/images/devportal-blog-logo.png" />
-            </span>
+    <span id="logo">
+        <a href="{{ "/blog.do" | relURL }}">
+            <img src="{{ .Site.Params.devportal.assets }}/images/devportal-logo.png" alt="ServiceNow Developers Logo"/>
         </a>
-    </h1>
+    </span>
+
     {{ else if ne .Section "" }}
       <h1><a href="{{ "/blog.do" | relURL }}">{{ .Section }}</a></h1>
     {{ else }}
