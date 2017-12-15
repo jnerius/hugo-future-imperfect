@@ -20,7 +20,7 @@
 
 <!-- Google Plus -->
 <li>
-  <a href="//plus.google.com/share?url={{ .Site.BaseURL }}/blog.do?p={{ .RelPermalink }}" target="_blank" class="share-btn google-plus">
+  <a href="//plus.google.com/share?url={{ $permalink }}" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
   </a>
@@ -28,7 +28,7 @@
 
 <!-- Facebook -->
 <li>
-  <a href="//www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" class="share-btn facebook">
+  <a href="//www.facebook.com/sharer/sharer.php?u={{ $permalink }}" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
     </a>
@@ -36,7 +36,7 @@
 
 <!-- Reddit -->
 <li>
-  <a href="//reddit.com/submit?url={{ .Permalink }}&title={{ .Title }}" target="_blank" class="share-btn reddit">
+  <a href="//reddit.com/submit?url={{ $permalink }}&title={{ .Title }}" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
   </a>
@@ -44,7 +44,7 @@
 
 <!-- LinkedIn -->
 <li>
-  <a href="//www.linkedin.com/shareArticle?url={{ .Permalink }}&title={{ .Title }}" target="_blank" class="share-btn linkedin">
+  <a href="//www.linkedin.com/shareArticle?url={{ $permalink }}&title={{ .Title }}" target="_blank" class="share-btn linkedin">
       <i class="fa fa-linkedin"></i>
       <p>LinkedIn</p>
     </a>
@@ -52,7 +52,7 @@
 
 <!-- Email -->
 <li>
-  <a href="mailto:?subject=Check out this post by {{ .Params.author }}&body={{ .Permalink }}" target="_blank" class="share-btn email">
+  <a href="mailto:?subject=Check out this post by {{ .Params.author }}&body={{ $permalink }}" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
   </a>
