@@ -18,17 +18,22 @@
       <script src="{{ .Site.Params.devportal.assets }}/js/util.js"></script>
       <script src="{{ .Site.Params.devportal.assets }}/js/main.js"></script>
       <script src="{{ .Site.Params.devportal.assets }}/js/backToTop.js"></script>
+      <script src="{{ .Site.Params.devportal.assets }}/js/user.js"></script>
     {{ end }}
 
     {{ if ne ($.Scratch.Get "jsFiles") false }}
       {{ range $.Scratch.Get "jsFiles" }}
         {{ if ne . "default" }}
-          <script src="{{ . | relURL }}"></script>
+          <script src="{{ $.Site.Params.devportal.assets | safeURL }}/js/{{ . }}"></script>
         {{ end }}
       {{ end }}
     {{ end }}
 
     <!-- This is called by default since this theme uses highlight.js -->
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+      ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
   </body>
 </html>

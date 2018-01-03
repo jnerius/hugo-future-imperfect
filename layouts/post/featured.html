@@ -1,4 +1,4 @@
-{{ if (isset .Params "featured") }}
+{{ if and (isset .Params "featured") (ne .Params.featured "")}}
     {{ $.Scratch.Set "path" "title" }}
     {{ $.Scratch.Set "structType" "page" }}
     {{ partial "img-path" . }}
@@ -6,7 +6,6 @@
     {{ $alt := $.Scratch.Get "alt" }}
     {{ $img := $.Scratch.Get "img" }}
     {{ $vfs := $.Site.Params.devportal.vfs }}
-
     <a href="blog.do?p={{ .RelPermalink | safeURL }}" class="image featured">
         <img src="{{ .Site.Params.devportal.vfs }}{{ .RelPermalink }}{{ .Params.featured }}" alt="{{ $alt }}">
     </a>

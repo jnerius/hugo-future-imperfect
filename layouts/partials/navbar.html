@@ -24,13 +24,16 @@
             {{ end }}
         </ul>
     </nav>
+
     <nav class="main">
         <ul>
+            {{ partial "user-menu" . }}
             {{ if $.Scratch.Get "shareNav" }}
             <li id="share-nav" class="share-menu" style="display:none;">
                 <a class="fa-share-alt" href="#share-menu">Share</a>
             </li>
             {{ end }}
+            {{ if .Site.Params.enableSearch }}
             <li class="search">
                 <a class="fa-search" href="#search">Search</a>
                 <form id="search" method="get" action="//google.com/search">
@@ -38,6 +41,7 @@
                     <input type="hidden" name="as_sitesearch" value="{{ .Site.BaseURL }}">
                 </form>
             </li>
+            {{ end }}
             <li class="menu">
                 <a class="fa-bars" href="#menu">Menu</a>
             </li>
@@ -49,12 +53,14 @@
 <section id="menu">
 
     <!-- Search -->
+        {{ if .Site.Params.enableSearch }}
         <section>
             <form class="search" method="get" action="//google.com/search">
                 <input type="text" name="q" placeholder="Search" />
                 <input type="hidden" name="as_sitesearch" value="{{ .Site.BaseURL }}">
             </form>
         </section>
+        {{ end }}
 
     <!-- Links -->
         <section>
