@@ -2374,7 +2374,7 @@
 					#header .main ul li > a {
 						text-decoration: none;
 						border-bottom: 0;
-						color: #aaaaaa;
+						color: #ffffff;
 						overflow: hidden;
 						position: relative;
 						text-indent: 4em;
@@ -2382,14 +2382,14 @@
 						/* Theoretically for IE 8 & 9 (more valid) */
 						/* ...but not required as filter works too */
 						/* should come BEFORE filter */
-						-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=35)";
+						-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
 
 						/* This works in IE 8 & 9 too */
 						/* ... but also 5, 6, 7 */
-						filter: alpha(opacity=35);
+						filter: alpha(opacity=65);
 
 						/* Modern Browsers */
-						opacity: 0.35;
+						opacity: 0.65;
 					}
 
 						#header .main ul li > a:before {
@@ -2462,6 +2462,9 @@
 				display: none;
 			}
 
+			#header .user-menu {
+				display: none;
+			}
 		}
 
 		@media screen and (max-width: 736px) {
@@ -2485,6 +2488,11 @@
 			#header h1 {
 				min-width: 0;
 				padding: 0 0 0 .5em;
+			}
+
+			#logo {
+				margin-top: 0px; 
+				padding-top: 0px; 
 			}
 		}
 
