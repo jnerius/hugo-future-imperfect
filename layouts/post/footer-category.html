@@ -41,4 +41,5 @@
     {{ range .Params.categories }}
         <li><a href='blog.do?p={{ add ($.Scratch.Get "categoryUrl") . | urlize | safeURL }}/'>{{ . }}</a></li>
     {{ end }}
+    <li><div id="read-count">Read count: </div></li>
 </ul>

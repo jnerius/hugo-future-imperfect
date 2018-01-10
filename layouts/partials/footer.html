@@ -19,7 +19,9 @@
       <script src="{{ .Site.Params.devportal.assets }}/js/main.js"></script>
       <script src="{{ .Site.Params.devportal.assets }}/js/backToTop.js"></script>
       <script src="{{ .Site.Params.devportal.assets }}/js/user.js"></script>
-    {{ end }}
+      <script src="{{ .Site.Params.devportal.assets }}/js/stats.js"></script>
+
+      {{ end }}
 
     {{ if ne ($.Scratch.Get "jsFiles") false }}
       {{ range $.Scratch.Get "jsFiles" }}
