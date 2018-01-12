@@ -63,7 +63,8 @@
             {{ end }}
         {{ end }}
 
-      {{ template "_internal/google_analytics.html" . }}
+      {{ partial "google_analytics.html" . }}
+      {{ partial "adobe.html" . }}
 
       {{ if .RSSLink }}
         {{ partial "rss-link" . }} 
