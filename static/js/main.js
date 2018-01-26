@@ -22,6 +22,7 @@
 			$shareMenu = $('#share-menu'),
 			$sidebar = $('#sidebar'),
 			$main = $('#main');
+			$userDropdown = $('#user-menu ul.dropdown-menu');
 
 		// TODO: Fix this, or implement lazy load.
 		// Disable animations/transitions until the page has loaded.

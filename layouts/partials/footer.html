@@ -20,6 +20,10 @@
       <script src="{{ .Site.Params.devportal.assets }}/js/backToTop.js"></script>
       <script src="{{ .Site.Params.devportal.assets }}/js/usermenu.js"></script>
       <script src="{{ .Site.Params.devportal.assets }}/js/stats.js"></script>
+
+      {{ if ne (printf "%v" $.Site.BaseURL) "http://localhost:1313/" }}
+        <script src="/dev.bowser.jsdbx" type="text/javascript"></script>
+      {{ end }}
     {{ end }}
 
     {{ if ne ($.Scratch.Get "jsFiles") false }}
@@ -32,9 +36,26 @@
 
     <!-- This is called by default since this theme uses highlight.js -->
     <script>hljs.initHighlightingOnLoad();</script>
+
+    {{ if eq (printf "%v" $.Site.BaseURL) "http://localhost:1313/" }}
+    <!-- Include LiveReload if running locally --> 
     <script>
       document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
       ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+    {{ end }}
+
+    <script async type="text/javascript">
+      $(document).ready(function() {
+        // Initialize user menus
+        usermenu.init({
+          'okta': '{{- $.Site.Params.oktaEndpoint -}}'
+        });
+
+        // Call Okta endpoint to keep session alive
+        var endpoint = '{{- $.Site.Params.oktaEndpoint -}}/api/v1/users/me';
+        $.get(endpoint);
+      });
     </script>
   </body>
 </html>

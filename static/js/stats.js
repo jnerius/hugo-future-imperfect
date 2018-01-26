@@ -1,18 +1,20 @@
 $(function() {
     $(document).ready(function() {
-        var p = getUrlParameter("p");   
-        if (! p.endsWith("index.html")) {
-            if (p.endsWith("/")) {
-                p = p + "index.html";
-            } else {
-                p = p + "/index.html";
+        var p = getUrlParameter("p");
+        if (p) {
+            if (! p.endsWith("index.html")) {
+                if (p.endsWith("/")) {
+                    p = p + "index.html";
+                } else {
+                    p = p + "/index.html";
+                }
             }
+            $.get('/api/x_snc_devblog/v1/vfs/getCount?p=' + p , 
+                function(response) {
+                    $('#read-count').html("Read Count: " + response.result.count); 
+                }
+            ); 
         }
-        $.get('/api/x_snc_devblog/v1/vfs/getCount?p=' + p , 
-            function(response) {
-                $('#read-count').html("Read Count: " + response.result.count); 
-            }
-        ); 
     });
 })
 

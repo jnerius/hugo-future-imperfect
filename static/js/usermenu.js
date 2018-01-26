@@ -1,4 +1,5 @@
-$(function() {
+usermenu = {}; 
+usermenu.init = function(properties) {
     $(document).ready(function() {
 
         $('.current-user').click(function(e) {
@@ -13,8 +14,8 @@ $(function() {
 
         $('.logout').click(function() {
             $.get('/logout.do', function(response) {
-                var logoutURL = 'https://servicenowsignon.okta.com/login/signout?fromURI='; 
-                logoutURL += 'https://devportalblog.service-now.com/app.do'; 
+                var logoutURL = properties.okta + '/login/signout?fromURI='; 
+                logoutURL += 'https://' + window.location.host + '/app.do'; 
                 window.location.href = logoutURL; 
             }); 
         });
@@ -24,8 +25,6 @@ $(function() {
             if (displayName == 'Guest') {
                 $('.current-user').hide();
                 $('.login').each(function() {
-                    console.log('Showing...'); 
-                    console.log($(this));
                     $(this).removeClass('menu-hidden');
                 });
             } else {
@@ -33,4 +32,4 @@ $(function() {
             }
         }); 
     });
-})
+}; 
