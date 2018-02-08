@@ -58,6 +58,7 @@
               <time class="published" datetime='{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
                 {{ ($.Scratch.Get "dateType").Format "January 2, 2006" }}
               </time>
+              {{ if isset .Params "authors" }}
               {{ range first 1 .Params.authors }}
                 {{ range where ($.Site.GetPage "taxonomyTerm" "authors").Pages "Params.name" . }}
                   <a class="author" href="blog.do?p={{ .RelPermalink | safeURL}}">
@@ -65,6 +66,7 @@
                   </a>
                 {{ end }}
               {{ end }}
+              {{end}}
             </header>
             {{ .Render "featured" }}
           </article>

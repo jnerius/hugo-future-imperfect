@@ -1,5 +1,6 @@
 $(function() {
     $(document).ready(function() {
+        console.log("Inside JQuery's ready function");
         var p = getUrlParameter("p");
         if (p) {
             if (! p.endsWith("index.html")) {
@@ -19,7 +20,8 @@ $(function() {
 })
 
 var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+    var parameters = window.location.search.substring(1);
+    var sPageURL = decodeURIComponent(parameters),
         sURLVariables = sPageURL.split('&'),
         sParameterName,
         i;

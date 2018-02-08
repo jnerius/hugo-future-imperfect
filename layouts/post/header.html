@@ -36,7 +36,11 @@
             
             </span>
         {{ if .Site.Params.includeReadingTime }}
-            <p>{{ .ReadingTime }} minute read</p>
+          {{ if eq .ReadingTime 0 }}
+            <p>1 minute read</p>
+            {{ else }}
+          <p>{{ .ReadingTime }} minute read</p>
+            {{ end }}
         {{ end }}
         <!--<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>-->
     </div>
